@@ -1,7 +1,31 @@
-<h1>My Robots</h1>
+<div class="page-header" align="center">
+<h1>Robot Index</h1>
+</div>
 
-<% @robots.each do |robot| %>
-  <h3 ><a href="/robots/<%= robot.id %>"><%= robot.name %></a></h3>
+<div class="jumbotron">
+  <% @robots.each do |robot| %>
+    <h3 ><a href="/robots/<%= robot.id %>"><%= robot.name %></a></h3>
     <p><%= robot.city %></p>
     <p><%= robot.state %></p>
+    <img src="https://robohash.org/<%=robot.name%>.png">
+    <a href="/robots/<%= robot.id %>/edit">Edit</a>
+    <form action="/robots/<%= robot.id %>" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" class="btn btn-danger" value="Delete"/>
+    </form>
 <% end %>
+</div>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Robot World</a>
+    </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/robots">Index</a></li>
+        <li><a href="/robots">New</a></li>
+        <li><a href="/">Home</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
