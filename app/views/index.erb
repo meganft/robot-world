@@ -1,29 +1,39 @@
 <div class="page-header" align="center">
-<h1>Robot Index</h1>
+<h1>Index of Current Robots <small> check 'em out</h1>
 </div>
 
-<div class="jumbotron">
+<div class="container">
+  <h3 align="center"> We currently have <%= @robots.count %> robots in existence.</h3>
+</div>
+<br>
+
+<div class="jumbotron" align="center">
+  <div class="container">
   <% @robots.each do |robot| %>
+  <div class="col-md-6">
     <h3 ><a href="/robots/<%= robot.id %>"><%= robot.name %></a></h3>
-    <p><%= robot.city %></p>
-    <p><%= robot.state %></p>
-    <img src="https://robohash.org/<%=robot.name%>.png">
-    <a href="/robots/<%= robot.id %>/edit">Edit</a>
+    <h4><%= robot.city %></h4> <h4><%= robot.state %></h4> <h4><%= robot.department %></h4>
+    <a href="/robots/<%= robot.id %>/edit" class="btn btn-info">Edit <%= robot.name %></a>
     <form action="/robots/<%= robot.id %>" method="POST">
-      <input type="hidden" name="_method" value="DELETE">
-      <input type="submit" class="btn btn-danger" value="Delete"/>
+      <input type="hidden" name="_method" value="DELETE"><br>
+      <input type="submit" class="btn btn-danger" value="Delete <%= robot.name %> "/>
     </form>
+  </div>
+  <div class="col-md-6">
+  <img src="https://robohash.org/<%=robot.name%>.png">
+  </div>
 <% end %>
+</div>
 </div>
 
 <nav class="navbar navbar-default">
-  <div class="container-fluid">
+
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Robot World</a>
     </div>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/robots">Index</a></li>
-        <li><a href="/robots">New</a></li>
+        <li><a href="/robots/new">New</a></li>
         <li><a href="/">Home</a></li>
       </ul>
     </div>
