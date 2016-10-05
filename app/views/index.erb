@@ -8,11 +8,11 @@
 <br>
 
 <div class="jumbotron" align="center">
-  <div class="container">
+  <div class="container" >
   <% @robots.each do |robot| %>
   <div class="col-md-6">
     <h3 ><a href="/robots/<%= robot.id %>"><%= robot.name %></a></h3>
-    <h4><%= robot.city %></h4> <h4><%= robot.state %></h4> <h4><%= robot.department %></h4>
+    <h4>From <%= robot.city %>, <%= robot.state %></h4> <h4>Works in <%= robot.department %></h4>
     <a href="/robots/<%= robot.id %>/edit" class="btn btn-info">Edit <%= robot.name %></a>
     <form action="/robots/<%= robot.id %>" method="POST">
       <input type="hidden" name="_method" value="DELETE"><br>
