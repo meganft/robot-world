@@ -1,5 +1,11 @@
+<div class="page-header" align="center">
+<h2>Edit away.</h2>
+</div>
+
+<div class="jumbotron">
+<form action="/robots" method="post" align="center">
 <form action="/robots/<%= @robot.id %>" method="post">
-  <p>Edit</p>
+  <p>Edit <%=@robot.name%> here:</p>
   <input type="hidden" name="_method" value="PUT" />
   <input type='text' name='robot[name]' value="<%= @robot.name %>"/><br/>
   <input type='text' name='robot[city]' value="<%= @robot.city %>"/><br/>
@@ -7,3 +13,19 @@
   <input type='text' name='robot[department]' value="<%= @robot.department %>"/><br/>
   <input type='submit'/>
 </form>
+</div>
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Robot World</a>
+    </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/robots">Index</a></li>
+        <li><a href="/robots/new">New</a></li>
+        <li><a href="/">Home</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
